@@ -16,11 +16,13 @@ class LangParser:
     def find_the_word(self, text):
         '''
         Take a sentence (string, can be a single word) as argument.
-        Return the word (string) that seems to be most relevant.
+        Return the most relevant word (string) as a location name.
         '''
         list_of_words = self._splitter(text)
-        list_of_non_stop_words = self._remove_stop_words(list_of_words)
-        best_word = self._choose_upper_or_last(list_of_non_stop_words)
+        list_of_relevant_words = self._remove_stop_words(list_of_words)
+        best_word = self._word_after_adress(list_of_relevant_words)
+        if best_word is None:
+            best_word = self._choose_upper_or_last(list_of_relevant_words)
         return best_word
 
     def _splitter(self, text):
@@ -34,11 +36,20 @@ class LangParser:
     def _remove_stop_words(self, list_of_words):
         '''
         Take a list of words (strings) as argument.
-        Return a list of this list's items if they are not in stop_word lists
+        Return a list of this list's items that are not in stop_word lists
         (case insensive comparison).
         '''
         return [word for word in list_of_words
                 if word.lower() not in stop_words]
+
+    def _word_after_adress(self, list_of_words):
+        """
+        Take a list of words as argument.
+        If the word "adresse" is in the list, return the next word.
+        """
+        for word in list_of_words:
+            if word.lower() == "adresse":
+                return list_of_words[list_of_words.index(word) + 1]
 
     def _choose_upper_or_last(self, list_of_words):
         '''

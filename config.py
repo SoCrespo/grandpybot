@@ -1,6 +1,6 @@
 # encode: utf-8
 
-GOOGLE_API_KEY = 'AIzaSyB7cfB6kPeDqX6mEHaiIPQtRmfum5tLhdI'
+GOOGLE_API_KEY = 'MY_API_KEY
 GOOGLE_PLACES_API_URL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
 GOOGLE_MAP_STATIC_API_URL = 'https://maps.googleapis.com/maps/api/staticmap?'
 IMG_HEIGHT = 400

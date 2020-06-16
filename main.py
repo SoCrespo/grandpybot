@@ -1,11 +1,9 @@
 # coding: utf-8
 
 import text_parser as tp
-import google_place_answer as gp
+import google_place_extractor
 import google_static_map as gm
-import wikipedia_answer as wiki
-import error
-import sys
+import wikipedia_extractor as wiki
 
 
 def ask():
@@ -13,12 +11,12 @@ def ask():
 
 
 def say_problem():
-    print("Mon cerveau Google me joue des tours ! "
+    print("mon cerveau Google me joue des tours ! "
           "Reviens quand je serai plus en forme...")
 
 
 def say_not_understood():
-    print("Hmmm, je n'ai pas bien compris ta question... ", end="")
+    print("Hmmm, je ne trouve pas de réponse à ta question... ", end="")
 
 
 def ask_for_choice(list_of_place_objects):
@@ -29,14 +27,12 @@ def ask_for_choice(list_of_place_objects):
     place = list_of_place_objects[int(input(choices)) - 1]
     return place
 
-def display_map(address):
-    pass
 
-def display_infos(place_object, answer, map):
+def display_infos(place_object):
     print(
         f"Ah, {place_object.name}, je connais cet endroit ! "
         f"C'est situé {place_object.address}."
-        f"\nEt à ce sujet, savais-tu que {answer.extract}\n(la suite ici : {answer.url}, la carte là : {map})"
+        f"\nEt à ce sujet, savais-tu que {place_object.text}\n(la suite ici : {place_object.url}, la carte là : {place_object.map})"
     )
 
 
@@ -45,27 +41,21 @@ def main():
     while not question_is_valid:
         text = ask()
         relevant_expression = tp.find_relevant_expression(text)
-        api_answer = gp.GooglePlaceAnswer(relevant_expression)
-        if api_answer.status == "ERROR":
-            say_problem()
-            sys.exit()
-        elif api_answer.status != "OK" or api_answer.candidates == []:
-            say_not_understood()
+        print(relevant_expression)
+        gp = google_place_extractor.GooglePlaceExtractor()
+        google_answer = gp.get_api_answer(relevant_expression)
+        question_is_valid = True
+        if len(google_answer) > 1:
+            place = ask_for_choice(google_answer)
         else:
-            question_is_valid = True
-            if len(api_answer.candidates) > 1:
-                place = ask_for_choice(api_answer.candidates)
-            else:
-                place = api_answer.candidates[0]
-                print(place.address)
-            try:
-                answer = wiki.WikipediaAnswer(place.address)
-                map = gm.get_map_url(place.address)
-            except error.APIError:
-                say_problem()
-                sys.exit()
-            
-            display_infos(place, answer, map)
+            place = google_answer[0]
+        print(place.address)
+        we = wiki.WikipediaExtractor()
+        page_title = we.get_best_match_title(place.address)
+        place.text = we.get_page_extract(page_title)
+        place.url = we.get_page_url(page_title)
+        place.map = gm.get_map_url(place.address)
+        display_infos(place)
 
 
 if __name__ == "__main__":

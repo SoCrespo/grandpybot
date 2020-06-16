@@ -2,7 +2,7 @@
 
 import pytest
 import error
-import wikipedia_answer as wiki
+import wikipedia_extractor as wiki
 
 examples = [
     "Cité Paradis",

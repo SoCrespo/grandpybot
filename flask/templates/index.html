@@ -8,34 +8,42 @@
 </head>
 <body>
     
-    <div class="container">
-        <div class="row"style="text-align: center;">
-            <div class="col">
-                <h1>Bienvenue chez GrandPyBot!</h1>
-            </div>
+    <div class="jumbotron">
+        <h1 style="text-align: center" >Bienvenue chez GrandPyBot !</h1>
+    </div>
+
+    <div class="container-fluid" id="main" style="text-align: center">
+        <div class=row>
+            <div class=col></div>
         </div>
         <div class=row>
-            <div class=col style="text-align: center;">zone d'affichage des réponses</div>
-        </div>    
-        <div class=row>
-            <div class=col style="text-align: center;">zone de saisie</div>
-        </div> 
-    </div>
-    <div class="bg-light">
-        <div class="container"style="text-align: center;">
-            <div class="row">
-                <div class="col">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">Sophie Crespo</li>
-                        <li class="list-inline-item">&middot;</li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/sophie-crespo-622539179/">LinkedIn</a></li>
-                        <li class="list-inline-item">&middot;</li>
-                        <li class="list-inline-item"><a href="https://github.com/SoCrespo">GitHub</a></li>
-                    </ul>
-                </div>
+            <div class=col>
+                <form>
+                    <label for="question">Quelle est ta question ? </label>
+                    <input type="text" id="question">
+                    <input type="submit" value="Allons-y !">
+                </form>
+
+                </form>
             </div>
-        </div>    
+        </div>
     </div>
+
+
+    <div class="container-fluid" id="footer" style="position: fixed; bottom: 0; text-align:center">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline" style="margin:auto;">
+                    <li class="list-inline-item">Sophie Crespo</li>
+                    <li class="list-inline-item"> - </li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/sophie-crespo-622539179/">LinkedIn</a></li>
+                    <li class="list-inline-item"> - </li>
+                    <li class="list-inline-item"><a href="https://github.com/SoCrespo">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
  
     <!-- Optional JavaScript -->
 

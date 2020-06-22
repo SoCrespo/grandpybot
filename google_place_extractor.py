@@ -18,7 +18,7 @@ class GooglePlaceExtractor:
 
     def get_api_answer(self, text):
         """
-        Take a text (string) as argument.
+        Take a wiki_text (string) as argument.
         Return a dict of Places objects.
         """
         url = c.GOOGLE_PLACES_API_URL
@@ -41,8 +41,7 @@ class GooglePlaceExtractor:
         for item in list_of_dicts:
             places_list.append(place.Place(
                 name=item['name'],
-                address=item["formatted_address"],
-                place_id=item['place_id']
+                address=item["formatted_address"]
                 ))
         return places_list
 

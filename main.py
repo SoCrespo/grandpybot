@@ -32,7 +32,7 @@ def display_infos(place_object):
     print(
         f"Ah, {place_object.name}, je connais cet endroit ! "
         f"C'est situé {place_object.address}."
-        f"\nEt à ce sujet, savais-tu que {place_object.text}\n(la suite ici : {place_object.url}, la carte là : {place_object.map})"
+        f"\nEt à ce sujet, savais-tu que {place_object.wiki_text}\n(la suite ici : {place_object.wiki_url}, la carte là : {place_object.map})"
     )
 
 
@@ -52,8 +52,8 @@ def main():
         print(place.address)
         we = wiki.WikipediaExtractor()
         page_title = we.get_best_match_title(place.address)
-        place.text = we.get_page_extract(page_title)
-        place.url = we.get_page_url(page_title)
+        place.wiki_text = we.get_page_extract(page_title)
+        place.wiki_url = we.get_page_url(page_title)
         place.map = gm.get_map_url(place.address)
         display_infos(place)
 

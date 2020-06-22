@@ -13,23 +13,53 @@
 
 <body>
     <div class="jumbotron">
-        <div class="container-fluid" id="main" style="text-align: center">
+        <div class="container id="main" >
             <h1 class="lead-3" >Bienvenue chez GrandPyBot !</h1>
         </div>
     </div>
 
-        <div class="row">
-            <div class=col></div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="question">Quelle est ta question ? </label>
-                    <input type="text" id="question">
-                    <input type="submit" value="Allons-y !">
-                </div>
+    <script>
+        function sendQuestion() {
+            const questionText = $("#user-text")[0].value;
+            if (questionText) {
+                $("#discussion").prepend('<div class="row">' +
+                    '            <div class="col-6"></div>' +
+                    '            <div class="question col-6 text-right rounded-pill">' +
+                    '                <p class="question"></p>' +
+                    '            </div>' +
+                    '        </div>' +
+                    '<br/>');
+                $("#discussion p.question")[0].innerText = questionText
+
+                setTimeout(function() { insertAnswer(questionText); }, 500);
+            }
+        }
+
+        function insertAnswer(questionText) {
+            const answerText = "Voici ta question : " + questionText;
+            $("#discussion").prepend('        <div class="row">' +
+                '            <div class="answer col-6 text-left rounded-pill">' +
+                '                <p class="answer"></p>' +
+                '            </div>' +
+                '            <div class="col-6"></div>' +
+                '        </div>' +
+                        '<br/>');
+            $("#discussion p.answer")[0].innerText = answerText
+        }
+    </script>
+
+    <div class="container">
+        <form>
+            <div class="input-group">
+                <input type="text" id = "user-text" class="form-control" placeholder="De quel endroit veux-tu que je te parle ?">
+                <span class="input-group-text" input type="submit" onclick="sendQuestion()">C'est parti !</span>
             </div>
-        </div>
+
+        </form>
+        <br/>
+    </div>
+
+    <div class="container" id="discussion">
     </div>
 
 

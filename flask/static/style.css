@@ -11,8 +11,22 @@
     background-position-x: left
     }
 
-h1{
+h1 {
     font-weight: bolder;
     color: #AA3000;
     text-shadow: 3px 3px #FFFFFF;
+    text-align: center;
+}
+
+.question {
+  background-color: #edeff8;
+}
+
+.answer {
+    background-color:  #ffdacc;
+}
+
+.button{
+    background-color: #7e8cce ;
+    color: #FFFFFF;
 }

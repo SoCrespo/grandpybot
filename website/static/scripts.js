@@ -1,4 +1,4 @@
-function sendQuestion() {
+        function sendQuestion() {
             const questionText = $("#user-text")[0].value;
             if (questionText) {
                 $("#discussion").prepend('<div class="row">' +

@@ -1,8 +1,7 @@
 # coding: utf-8
 
 import requests
-import place
-import config as c
+from backend import place, config as c
 
 c.GOOGLE_API_KEY
 c.GOOGLE_PLACES_API_URL
@@ -19,7 +18,7 @@ class GooglePlaceExtractor:
     def get_api_answer(self, text):
         """
         Take a wiki_text (string) as argument.
-        Return a dict of Places objects.
+        Return a list of Places objects.
         """
         url = c.GOOGLE_PLACES_API_URL
         key = c.GOOGLE_API_KEY

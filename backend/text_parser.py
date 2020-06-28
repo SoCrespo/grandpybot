@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from string import punctuation
-import stop_words as sw
+from backend import stop_words as sw
 
 signs = punctuation.replace('-', '')
 separators = str.maketrans(signs, " " * len(signs))

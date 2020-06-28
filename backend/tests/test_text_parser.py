@@ -1,6 +1,4 @@
-import text_parser
-import stop_words as sw
-import text_parser as tp
+from backend import stop_words as sw, text_parser as tp
 
 testing_texts = [   
 "coucou GrandPy, comment ça va ? Tu peux me parler d'Openclassrooms stp ",

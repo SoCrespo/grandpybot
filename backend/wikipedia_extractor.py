@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import requests
-import config as c
+from backend import config as c
 
 
 class WikipediaExtractor:

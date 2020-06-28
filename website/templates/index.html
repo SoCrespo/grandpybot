@@ -13,19 +13,17 @@
 
 <body>
     <div class="jumbotron">
-        <div class="container" >
             <h1 class="lead-3" >Bienvenue chez GrandPyBot !</h1>
-        </div>
+     </div>
+
+    <div class="container discussion-zone">
     </div>
 
-
-    <div class="container discussion-zone" id="discussion"></div>
-
-    <div class="container">
+    <div class="container form-zone">
         <form>
             <div class="input-group">
-                <input type="text" id = "user-text" class="form-control" placeholder="De quel endroit veux-tu que je te parle ?">
-                <span class="input-group-text" type="submit" onclick="sendQuestion()">C'est parti !</span>
+                <input type="text" id="user-text" class="form-control" placeholder="De quel endroit veux-tu que je te parle ?">
+                <span class="input-group-text" id="btn" type="submit">C'est parti !</span>
             </div>
         </form>
         <br/>

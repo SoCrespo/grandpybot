@@ -1,6 +1,6 @@
 # coding: utf-8
 import requests
-import config as c
+from backend import config as c
 
 
 def get_map_url(address):
@@ -18,3 +18,6 @@ def get_map_url(address):
     img = requests.get(url, params=payload)
     return img.url
 
+
+if __name__ == "__main__":
+    print(get_map_url('openclassrooms'))

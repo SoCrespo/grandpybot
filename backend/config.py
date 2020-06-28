@@ -1,5 +1,5 @@
 # encode: utf-8
-import api_key
+from backend import api_key
 
 GOOGLE_API_KEY = api_key.API_KEY
 GOOGLE_PLACES_API_URL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
